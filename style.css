@@ -1,0 +1,66 @@
+/* =====Default=====*/
+*, *::before, *::after {
+    box-sizing: border-box;
+}
+
+/* =====Base=====*/
+body {
+    margin: 0;
+    background: black;
+    color: aliceblue;
+    font-family: monospace;
+}
+
+/* =====Layout=====*/
+#main {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 16px;
+}
+
+h1 {
+    margin-bottom: 0;
+}
+
+h2 {
+    margin-bottom: 1px;
+}
+/* =====Settings=====*/
+
+
+/* =====Buttons=====*/
+#display-btn {
+    font-family: cursive;
+    font-size: large;
+    color: blueviolet;
+    background: rgb(240, 236, 236);
+    border: 2px solid plum;
+    align-self: center;
+    padding: 3px;
+}
+/* =====Preview=====*/
+#preview-box {
+    display: flex;
+    border: 2px solid lavender;
+    height: 100px;
+    align-items: center;
+    justify-content: safe center;
+    overflow: hidden;
+}
+
+#preview-text {
+    white-space: nowrap;
+}
+
+#preview-box.scrolling {
+    justify-content: flex-start;
+}
+
+/* =====Display=====*/
+#preview-box:fullscreen {
+    border: none;
+    height: 100%;
+}

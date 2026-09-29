@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Text Scroller</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="app.js" defer></script>
+</head>
+<body>
+    <main id="main">
+        <h1> Text Scroller</h1>
+        <h2>Preview</h2>
+        <div id="preview-box">
+            <span id="preview-text">
+                 <p id="default-text">I am a giant purple rainbow elephant that love cotton candy.</p>
+            </span>
+        </div>
+        <h2>Settings</h2>
+        <div class="settings">
+            <label for="message">Type Message:</label>
+            <input 
+                type="text" 
+                id="message" 
+                name="message" 
+                placeholder="Hello World!">
+        </div>
+        <div class="settings">
+            <label for="size">Text Size:</label>
+            <input 
+                type="range" 
+                id="size" 
+                name="size"
+                min="12"
+                max="72"
+                value="48"
+                step="1">
+        </div>
+        <div class="settings">
+            <label for="color">Text Color:</label>
+            <input 
+                type="color" 
+                id="color" 
+                name="color"
+                value="#e834eb">
+        </div>
+        <div class="settings">
+            <label for="speed">Scroll Speed:</label>
+            <input 
+                type="range" 
+                id="speed" 
+                name="speed"
+                min="0"
+                max="10"
+                value="3"
+                step="1">
+        </div>
+        <button id="display-btn">Display</button>
+        
+        
+    </main>
+    <div id="display-outer">
+        <span id="display-text">
+            
+        </span>
+    </div>
+</body>
+</html>
