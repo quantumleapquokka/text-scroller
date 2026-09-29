@@ -49,10 +49,12 @@ h2 {
     align-items: center;
     justify-content: safe center;
     overflow: hidden;
+    container-type: size;
 }
 
 #preview-text {
     white-space: nowrap;
+    font-size: var(--size);
 }
 
 #preview-box.scrolling {
@@ -63,4 +65,5 @@ h2 {
 #preview-box:fullscreen {
     border: none;
     height: 100%;
+    padding: 10vh 0;
 }

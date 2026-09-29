@@ -9,12 +9,12 @@ const previewBox = document.getElementById("preview-box")
 const displayButton = document.getElementById('display-btn')
 // State
 let x = 0
-
+let wakeLock = null
 
 // Functions
 function updatePreview() {
     previewText.textContent = scrollText.value || scrollText.placeholder
-    previewText.style.fontSize = fontSizeSlider.value + "px"
+    previewText.style.setProperty("--size", fontSizeSlider.value + "cqh")
     previewText.style.color = colorPicker.value 
 }
 
@@ -47,7 +47,11 @@ async function startFullscreen() {
         console.log("browser does not support landscape")
     }
     
-    
+    try {
+        wakeLock = await navigator.wakeLock.request("screen")
+    } catch {
+        console.log("screen not awake boohoo")
+    }
     
 }
 
@@ -57,6 +61,17 @@ fontSizeSlider.addEventListener("input", updatePreview)
 colorPicker.addEventListener("input", updatePreview)
 displayButton.addEventListener("click", startFullscreen)
 
+document.addEventListener("fullscreenchange", () => {
+    if (!document.fullscreenElement && wakeLock) {
+        wakeLock.release()
+        wakeLock = null
+    }
+})
+
 // Start
 updatePreview()
 tick()
+
+if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register("sw.js")
+}
