@@ -16,7 +16,8 @@ let holdTimer = null
 function updatePreview() {
     previewText.textContent = scrollText.value || scrollText.placeholder
     previewText.style.setProperty("--size", fontSizeSlider.value + "cqh")
-    previewText.style.color = colorPicker.value 
+    previewText.style.color = colorPicker.value
+    previewText.style.textShadow = colorPicker.value 
 }
 
 function tick() {

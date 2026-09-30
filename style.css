@@ -71,6 +71,7 @@ h2 {
     white-space: nowrap;
     font-size: var(--size);
     font-family: "LEDbit", monospace;
+    text-shadow: 0px 0px 8px;
 }
 
 #preview-box.scrolling {
