@@ -17,7 +17,6 @@ function updatePreview() {
     previewText.textContent = scrollText.value || scrollText.placeholder
     previewText.style.setProperty("--size", fontSizeSlider.value + "cqh")
     previewText.style.color = colorPicker.value
-    previewText.style.textShadow = colorPicker.value 
 }
 
 function tick() {
@@ -45,7 +44,7 @@ async function startFullscreen() {
     if (previewBox.requestFullscreen) {
         await previewBox.requestFullscreen()
     } else {
-        previewBox.classList.toggle("fake-fullscreen")
+        previewBox.classList.add("fake-fullscreen")
     }
     
     // Lock orientation to landscape for supported browsers
