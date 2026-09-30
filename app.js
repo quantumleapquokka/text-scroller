@@ -10,6 +10,7 @@ const displayButton = document.getElementById('display-btn')
 // State
 let x = 0
 let wakeLock = null
+let holdTimer = null
 
 // Functions
 function updatePreview() {
@@ -39,14 +40,21 @@ function tick() {
 }
 
 async function startFullscreen() {
-    await previewBox.requestFullscreen()
+    // Fullscreen for Android and fake-fullscreen for IOS
+    if (previewBox.requestFullscreen) {
+        await previewBox.requestFullscreen()
+    } else {
+        previewBox.classList.toggle("fake-fullscreen")
+    }
     
+    // Lock orientation to landscape for supported browsers
     try {
         await screen.orientation.lock("landscape")
     } catch {
         console.log("browser does not support landscape")
     }
     
+    // Keeps screeen awake in the duration of displaying the message
     try {
         wakeLock = await navigator.wakeLock.request("screen")
     } catch {
@@ -55,16 +63,41 @@ async function startFullscreen() {
     
 }
 
+function exitFakeFullscreen(){
+    // Remove fake-fullscreen class
+    previewBox.classList.remove("fake-fullscreen")
+
+    // Release wakelock
+    if (wakeLock) {
+        wakeLock.release()
+        wakeLock = null
+    }
+
+}
+
+function cancelHold() {
+    clearTimeout(holdTimer)
+}
+
 // Event Listeners
 scrollText.addEventListener("input", updatePreview)
 fontSizeSlider.addEventListener("input", updatePreview)
 colorPicker.addEventListener("input", updatePreview)
 displayButton.addEventListener("click", startFullscreen)
 
+previewBox.addEventListener("pointerup", cancelHold)
+previewBox.addEventListener("pointercancel", cancelHold)
+
 document.addEventListener("fullscreenchange", () => {
     if (!document.fullscreenElement && wakeLock) {
         wakeLock.release()
         wakeLock = null
+    }
+})
+
+previewBox.addEventListener("pointerdown", () => {
+    if(previewBox.classList.contains("fake-fullscreen")) {
+        holdTimer = setTimeout(exitFakeFullscreen, 2000)
     }
 })
 

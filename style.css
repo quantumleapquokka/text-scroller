@@ -67,3 +67,17 @@ h2 {
     height: 100%;
     padding: 10vh 0;
 }
+
+#preview-box.fake-fullscreen {
+    position: fixed;
+    inset: 0;
+    height: 100dvh;
+    z-index: 1000;
+    background: black;
+    border: none;
+    padding: 10vh 0;
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
+}
