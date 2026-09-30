@@ -7,7 +7,8 @@ const FILES = [
     "manifest.json",
     "icon-192.png",
     "icon-512.png",
-    "favicon.png"
+    "favicon.png",
+    "fonts/BitcountSingle-Regular.ttf"
  ]
 
 self.addEventListener("install", (event) => {

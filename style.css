@@ -3,6 +3,16 @@
     box-sizing: border-box;
 }
 
+:root {
+    background: black;
+}
+
+@font-face {
+    font-family: LEDbit;
+    src: url(fonts/BitcountSingle-Regular.ttf);
+    font-display: swap;
+}
+
 /* =====Base=====*/
 body {
     margin: 0;
@@ -33,13 +43,13 @@ h2 {
 
 /* =====Buttons=====*/
 #display-btn {
-    font-family: cursive;
-    font-size: large;
+    font-family: "LEDbit", cursive;
+    font-size: x-large;
     color: blueviolet;
     background: rgb(240, 236, 236);
     border: 2px solid plum;
     align-self: center;
-    padding: 3px;
+    padding: 7px;
 }
 /* =====Preview=====*/
 #preview-box {
@@ -50,11 +60,17 @@ h2 {
     justify-content: safe center;
     overflow: hidden;
     container-type: size;
+
+
+    user-select: none;
+    -webkit-user-select: none;
+    -webkit-touch-callout: none;
 }
 
 #preview-text {
     white-space: nowrap;
     font-size: var(--size);
+    font-family: "LEDbit", monospace;
 }
 
 #preview-box.scrolling {
@@ -76,8 +92,4 @@ h2 {
     background: black;
     border: none;
     padding: 10vh 0;
-
-    user-select: none;
-    -webkit-user-select: none;
-    -webkit-touch-callout: none;
 }
